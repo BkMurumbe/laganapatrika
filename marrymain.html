@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+				<meta name="theme-color" content=""/>	
+    <title>lagnapatrika</title>
+    <style>
+        body{
+            
+            margin:0;
+            padding:0;
+        }
+        
+        *{
+            box-sizing:border-box;
+        }
+        
+        #app{
+         
+          height:100vh; 
+          width:100vw;
+          background-image:url("marryimg.jpg");
+           background-positon:auto;
+           background-repeat:no-repeat;
+           background-size:cover;
+           overflow:auto;
+           
+        }
+        
+        
+        
+        .mainpage{
+           
+           width:100vw;
+           display:flex;
+           flex-direction:column;
+           justify-content:center;
+           align-items:center;  
+           background:linear-gradient(rgba(0,0,0,0.2) 10%,rgba(0,0,0,0.7) 90%);
+           overflow:auto;
+           color:white;
+           padding-bottom:100vh;
+          
+        }
+        
+        .box{
+          
+           width:100vw;
+           display:flex;
+           flex-direction:column;
+           justify-content:left;
+           align-items:center;
+           padding:8px;
+            
+        }
+        
+        .eventbox{
+            
+            width:300px;
+            padding:8px;
+            margin:8px;
+            text-align:left;
+            border-radius:8px;
+            background:rgba(0,0,0,0.5);
+            font-size:1.2em;
+            
+        }
+        
+        .headbox{
+            
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height:60px;
+            width:100vw;
+            background:rgba(0,0,0,0.3);
+            color:#fff;
+            border-bottom:solid 4px orange;
+            
+            
+            
+        }
+       
+       .copbox{
+           
+           width:100vw;
+           padding:8px;
+           background:none;
+           margin-top:150px;
+           
+       }
+       
+        #showcouple{
+            
+            font-size:84px;
+            font-weight:bolder;
+            letter-spacing:-2px;
+            text-align:center;
+        }
+        
+        #cname{
+            
+            height:50px;
+            width:250px;
+            background:white;
+            border-radius:50px;
+            border:none;
+            outline:none;
+            text-align: center;
+            font-size:1.2em;
+           
+        }
+        
+        .inpbox{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            width:300px;
+            padding:8px;
+            margin:8px;
+        }
+       
+       .cardbtn{
+           
+           height:50px;
+           width:250px;
+           border:none;
+           background:orange;
+           font-size:1.5em;
+           font-weight:bold;
+           border-radius:50px;
+           margin-top:0.5em;
+       }
+       
+    </style>
+</head>
+<body>
+  <div id="app">
+     <div class="mainpage">
+         
+       <div class="headbox">
+        
+        <h2 id="htitle">Lagana Patrika</h2>
+      
+       </div>
+       
+       <div class="copbox">
+           
+         <p id="showcouple">Balaji weds Lisa</p>
+       
+         </p>
+       </div>
+       
+       <div class="inpbox">
+             <h3>तुमची लग्नपत्रिका मिळवा </h3>
+               <p>
+        आम्ही तुम्हाला या विवाह समारंभासाठी आमंत्रित करत आहोत 
+        <span id="attende"></span></p>
+    <input type="text" id="cname" placeholder="Enter your name" oninput="nameinput()">
+             <button class="cardbtn" onclick="downl()">Download</button>
+         </div> 
+           
+       <div class="eventbox">
+          <div>
+         <p id="date">Date</p>
+         </div>
+         <div>
+         <p id="place">Place</p>
+         </div>
+         <div>
+         <p id="time">time</p>
+         </div>
+         <div>
+          <p id="timer"></p>   
+         </div>
+       </div> 
+       
+       <div class="box">
+         <div>
+             <p id="qot"></p>
+         </div>     
+       </div>  
+       
+       <div>
+           <div id="patrika">
+               
+           </div>
+       </div>
+       
+     </div> 
+  </div>  
+ <script>
+     
+     class Patrika{
+         
+         constructor(eventtitle,couplename,eventdate,eventplace,eventtime){
+     
+     this.eventtitle = eventtitle;
+     this.couplename = couplename;
+     this.eventdate = eventdate;
+     this.eventplace = eventplace;
+     this.eventtime = eventtime;
+         
+             
+    }
+    
+    seteventtitle(etitle){
+      
+       etitle.innerHTML=this.eventtitle;
+        
+    }
+    
+    setcouplename(ecouple){
+    
+      ecouple.innerHTML=this.couplename;
+        
+    }
+    
+    seteventdate(edate){
+    
+      edate.innerHTML="Date:- "+this.eventdate;
+        
+    }
+    
+    seteventplace(eplace){
+    
+      eplace.innerHTML="Place:- "+this.eventplace;
+        
+        
+    }
+    
+    seteventtime(etime){
+    
+      etime.innerHTML="Time:- "+this.eventtime;
+        
+    }
+ }
+ 
+ function getbyid(ids){
+     
+   var newelm = document.getElementById(ids);
+   
+   return newelm;
+    
+ }
+var invto="Balaji";
+ function nameinput(){
+     
+     var myname = getbyid("cname").value;
+     var evattende = getbyid("attende");
+     evattende.innerHTML= myname;
+     invto=myname;
+     
+ }
+ 
+ var pdata = {
+    
+    "evntitle":"लग्न पत्रिका",
+    "evncouplename":"बालाजी आणि लीसा यांचा शुभविवाह ",
+    "evndate":"12 नोव्हेंबर 2022",
+    "evnplace":"केदारनाथ मंगलकार्यालय, पुणे",
+    "evntime":"दुपारी 1:00PM",
+    "evndc":"आम्ही तुम्हाला या लग्नाचे आग्रहाचे निमंत्रण देत आहोत, तरी तुम्ही या शुभ समारंभाला उपस्थित राहावे अशी आमची कळकळीची विनंती. धन्यवाद!",
+    "malinfo":"ची.बालाजी सिंह जाधव, सिंह जाधव यांचे कनिष्ठ पुत्र, लातूर ",
+    "feminfo":"ची.सौ.का लीसा ट्रम्प, लुईस ट्रम्प यांची कन्या, फ्लोरिडा , अमेरिका"
+     
+ };
+
+ 
+ function filldata(){
+  var evtitle = getbyid("htitle");
+  var evcouplename = getbyid("showcouple");
+  var evdate = getbyid("date");
+  var evtime = getbyid("time");
+  var evplace = getbyid("place");
+  
+  
+  var epatrika = new Patrika(
+     pdata.evntitle,
+     pdata.evncouplename,
+     pdata.evndate,
+     pdata.evnplace,
+     pdata.evntime    
+  );
+  epatrika.seteventtitle(evtitle);
+  epatrika.setcouplename(evcouplename);
+  epatrika.seteventdate(evdate);
+  epatrika.seteventplace(evplace);
+  epatrika.seteventtime(evtime);
+  
+  
+ }
+ filldata();
+ var bimg;
+ var dimg;
+ function preload(){
+    
+     bimg = loadImage('marryimg.jpg');
+     dimg = loadImage('deco.png');
+ }
+ 
+ function setup(){
+     
+    
+   c =	createCanvas(350,500);
+						background("white");
+			pg=createGraphics(350,500);			
+			c.id("canva");		
+			c.parent("patrika");
+			
+     
+ }
+ 
+ function draw(){
+       pg.image(bimg,0,0,350,500);
+       pg.fill("rgba(0,0,0,0.5)");
+							pg.stroke("white");
+							pg.strokeWeight(10);
+							pg.rect(0,0, 350, 500, 0);
+       pg.noStroke();
+			   	pg.fill("white");
+							pg.textSize(20);	
+							pg.textAlign(CENTER);
+							pg.textStyle(BOLD);
+							pg.text(pdata.evntitle,20,50,300,300);
+							pg.fill("white");
+							pg.textSize(20);
+							pg.text(pdata.evncouplename,20,100,300,300);
+							pg.fill("rgba(0,0,0,0)");
+							pg.rect(20,150,100,80,0);
+							pg.rect(230,150,100,80,0);
+							pg.textSize(8);
+							pg.textAlign(CENTER);
+							pg.fill("white");
+							pg.text(pdata.feminfo,30,150,60,80);
+							pg.textAlign(CENTER);
+							pg.text(pdata.malinfo,260,150,60,80);
+						 pg.textSize(14);
+						 pg.textAlign(CENTER);
+							pg.fill("lime");
+							pg.text("खास निमंत्रण"+" "+invto+" "+"यांना",20,250,300,300);
+							pg.fill("white");
+							pg.text(pdata.evndc,20,300,300,300);
+							pg.textAlign(CENTER);
+							pg.fill("rgba(0,0,0,0.5)");
+							pg.rect(20,380,300,100,10);
+							pg.fill("white");
+						 pg.text("Date:-"+" "+pdata.evndate,20,400,300,300);
+							pg.text("Time:-"+" "+pdata.evntime,20,420,300,300);
+							pg.text("Place:-"+" "+pdata.evnplace,20,440,300,300);
+							pg.image(dimg,10,10,70,70);
+							pg.image(dimg,250,400,70,70);
+							image(pg,0,0);
+							
+ }
+ 
+ function downl(){
+ var inptext = getbyid("cname").value;
+  if(inptext!=""){
+		pg.saveCanvas(c,"epatrika","png");		
+  	}
+  	else{
+  	    
+  	   alert("please enter name");
+  	}	
+				}
+ </script>   
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+</html>
