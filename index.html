@@ -159,7 +159,7 @@
                <p>
         आम्ही तुम्हाला या विवाह समारंभासाठी आमंत्रित करत आहोत 
         <span id="attende"></span></p>
-    <input type="text" id="cname" placeholder="Enter your name" oninput="nameinput()">
+    <input type="text" id="cname" placeholder="Enter Recipient name" oninput="nameinput()">
              <button class="cardbtn" onclick="downl()">Download</button>
          </div> 
            
@@ -360,7 +360,8 @@ var invto="Balaji";
  function downl(){
  var inptext = getbyid("cname").value;
   if(inptext!=""){
-		pg.saveCanvas(c,"epatrika","png");		
+		pg.saveCanvas(c,"epatrika","png");
+		alert("Please wait a moment,downloading...");
   	}
   	else{
   	    
